@@ -47,8 +47,6 @@ public:
 
     void get_weights();
 
-    void predict(vector<vector<float>> vec);
-
     void predict(vector<vector<double>> vec);
 
     void plot(int argc, char** argv);
