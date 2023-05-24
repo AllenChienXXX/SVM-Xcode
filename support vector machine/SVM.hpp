@@ -2,14 +2,15 @@
 #include<vector>
 #include<cmath>
 #include<algorithm>
-
+#include <GLUT/GLUT.h>
+#include <OpenGL/OpenGL.h>
 
 using namespace std;
 
 class SVM
 {
 public:
-    SVM(vector<vector<float>>inputs, vector<float>labels, float C = 200, float tolerence = 0.0001);
+    SVM(vector<vector<double>>inputs, vector<double>labels, double C = 200, double tolerence = 0.0001);
 
     void init_alpha_b(int len);
 
@@ -22,13 +23,13 @@ public:
     void update();
 
     //check lowerbound and upperbound
-    void check_condition(int index1, int index2, float &Lbound, float &Hbound);
+    void check_condition(int index1, int index2, double &Lbound, double &Hbound);
 
     //returns the new alpha
-    float update_alpha(int index1, int index2);
+    double update_alpha(int index1, int index2);
 
     //adjust alpha with lower and upperbound
-    void adjust_alpha(float Lbound, float Hbound);
+    void adjust_alpha(double Lbound, double Hbound);
 
     void update_bias(int index1, int index2);
 
@@ -36,39 +37,45 @@ public:
 
     int select_alpha2(int inde1R);
 
-    vector<float> v_product(vector<float> v1, vector<float> v2);
+    vector<double> v_product(vector<double> v1, vector<double> v2);
 
-    float Kernel_function(vector<float> x1, vector<float> x2);
+    double Kernel_function(vector<double> x1, vector<double> x2);
 
     void print_alpha();
 
-    void print_v(vector<float> v);
+    void print_v(vector<double> v);
 
     void get_weights();
 
     void predict(vector<vector<float>> vec);
 
+    void predict(vector<vector<double>> vec);
 
+    void plot(int argc, char** argv);
 
-//private:
+    void static display();
+
+    void static display_points();
+
+private:
     
-    vector<vector<float>> inputs;
-    vector<float> labels;
-    vector<float> alpha;
-    vector<float> outputs;
-    vector<float> errors;
+    static vector<vector<double>> inputs;
+    vector<double> labels;
+    vector<double> alpha;
+    vector<double> outputs;
+    vector<double> errors;
     vector<int> updatelist;
-    vector<float> weights;
+    static vector<double> weights;
 
     //range C
-    float C;
+    double C;
     //tolerence
-    float tol;
+    double tol;
 
-    float bias;
+    double static bias;
 
-    float alpha1_old;
-    float alpha1_new;
-    float alpha2_old;
-    float alpha2_new;
+    double alpha1_old;
+    double alpha1_new;
+    double alpha2_old;
+    double alpha2_new;
 };

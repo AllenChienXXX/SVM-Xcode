@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF1F85E12A1D98FF00242B04 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1F85E02A1D98FF00242B04 /* OpenGL.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		BF2C6C1429A15049009B9527 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2C6C1329A15049009B9527 /* main.cpp */; };
 		BF2C6C1C29A150FE009B9527 /* SVM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2C6C1A29A150FE009B9527 /* SVM.cpp */; };
+		BFA11CA42A1E4052007812BE /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA11CA32A1E4052007812BE /* GLUT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,10 +26,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF1F85E02A1D98FF00242B04 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BF2C6C1029A15049009B9527 /* support vector machine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "support vector machine"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF2C6C1329A15049009B9527 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		BF2C6C1A29A150FE009B9527 /* SVM.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SVM.cpp; sourceTree = "<group>"; };
 		BF2C6C1B29A150FE009B9527 /* SVM.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SVM.hpp; sourceTree = "<group>"; };
+		BFA11CA32A1E4052007812BE /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFA11CA42A1E4052007812BE /* GLUT.framework in Frameworks */,
+				BF1F85E12A1D98FF00242B04 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF1F85DF2A1D98FF00242B04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFA11CA32A1E4052007812BE /* GLUT.framework */,
+				BF1F85E02A1D98FF00242B04 /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BF2C6C0729A15049009B9527 = {
 			isa = PBXGroup;
 			children = (
 				BF2C6C1229A15049009B9527 /* support vector machine */,
 				BF2C6C1129A15049009B9527 /* Products */,
+				BF1F85DF2A1D98FF00242B04 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

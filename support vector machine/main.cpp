@@ -2,11 +2,10 @@
 #include"SVM.hpp"
 
 
-
-int main()
+int main(int argc, char** argv)
 {
-    vector<vector<float>> inputs = { {1,2},{7,1},{8.2,1},{1,3} };
-    vector<float> labels = { -1,1,1,-1 };
+    vector<vector<double>> inputs = { {1,1},{1,2},{1,3},{1,4},{2,1},{2,2}, {2,3},{2,4} };
+    vector<double> labels = { -1,-1,-1,-1,1,1,1,1 };
     SVM mysvm(inputs, labels);
 
     for (int i = 0; i < 200; i++) {
@@ -18,9 +17,10 @@ int main()
     //mysvm.get_weights();
     //mysvm.print_v(mysvm.weights);
 
-    mysvm.predict({ {1,2},{7,1},{8.2,1},{1,3} });
+    //mysvm.predict({ {1,2},{7,1},{8.2,1},{1,3} });
 
-
-
+    mysvm.get_weights();
+    //mysvm.print_alpha();
+    mysvm.plot(argc, argv);
 }
 
