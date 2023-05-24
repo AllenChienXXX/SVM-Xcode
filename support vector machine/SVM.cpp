@@ -220,7 +220,7 @@ void SVM::get_weights() {
     }
 }
 
-void SVM::predict(vector<vector<float>> vec) {
+void SVM::predict(vector<vector<double>> vec) {
     //re-initialize the weights
     get_weights();
     cout << "Output labels: ";

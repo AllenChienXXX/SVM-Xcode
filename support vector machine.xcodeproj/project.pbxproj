@@ -11,6 +11,7 @@
 		BF2C6C1429A15049009B9527 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2C6C1329A15049009B9527 /* main.cpp */; };
 		BF2C6C1C29A150FE009B9527 /* SVM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2C6C1A29A150FE009B9527 /* SVM.cpp */; };
 		BFA11CA42A1E4052007812BE /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA11CA32A1E4052007812BE /* GLUT.framework */; };
+		BFA11CA82A1E5E30007812BE /* preprocess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFA11CA62A1E5E30007812BE /* preprocess.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +33,9 @@
 		BF2C6C1A29A150FE009B9527 /* SVM.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SVM.cpp; sourceTree = "<group>"; };
 		BF2C6C1B29A150FE009B9527 /* SVM.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SVM.hpp; sourceTree = "<group>"; };
 		BFA11CA32A1E4052007812BE /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		BFA11CA62A1E5E30007812BE /* preprocess.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = preprocess.cpp; sourceTree = "<group>"; };
+		BFA11CA72A1E5E30007812BE /* preprocess.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = preprocess.hpp; sourceTree = "<group>"; };
+		BFA11CAB2A1E5F5D007812BE /* Breast Cancer Wisconsin (Diagnostic) Data Set.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Breast Cancer Wisconsin (Diagnostic) Data Set.csv"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 		BF2C6C0729A15049009B9527 = {
 			isa = PBXGroup;
 			children = (
+				BFA11CA92A1E5EF8007812BE /* Datasets */,
+				BFA11CA52A1E5E0E007812BE /* Preprocess */,
 				BF2C6C1229A15049009B9527 /* support vector machine */,
 				BF2C6C1129A15049009B9527 /* Products */,
 				BF1F85DF2A1D98FF00242B04 /* Frameworks */,
@@ -81,6 +87,23 @@
 				BF2C6C1B29A150FE009B9527 /* SVM.hpp */,
 			);
 			path = "support vector machine";
+			sourceTree = "<group>";
+		};
+		BFA11CA52A1E5E0E007812BE /* Preprocess */ = {
+			isa = PBXGroup;
+			children = (
+				BFA11CA62A1E5E30007812BE /* preprocess.cpp */,
+				BFA11CA72A1E5E30007812BE /* preprocess.hpp */,
+			);
+			path = Preprocess;
+			sourceTree = "<group>";
+		};
+		BFA11CA92A1E5EF8007812BE /* Datasets */ = {
+			isa = PBXGroup;
+			children = (
+				BFA11CAB2A1E5F5D007812BE /* Breast Cancer Wisconsin (Diagnostic) Data Set.csv */,
+			);
+			path = Datasets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFA11CA82A1E5E30007812BE /* preprocess.cpp in Sources */,
 				BF2C6C1C29A150FE009B9527 /* SVM.cpp in Sources */,
 				BF2C6C1429A15049009B9527 /* main.cpp in Sources */,
 			);
