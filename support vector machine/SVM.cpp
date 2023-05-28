@@ -242,16 +242,16 @@ void SVM::plot(int argc, char** argv) {
     glutInitWindowSize(500, 500); // Set initial window size
     glutInitWindowPosition(10, 10);
 
-    glutCreateWindow("Support Vector Machine Plot");    // Create the window
+    string title = "Linear SVM weights:"+to_string(weights[0])+","+to_string(weights[1])+" bias:"+to_string(bias);
+    glutCreateWindow("svm");    // Create the window
     glClearColor(1.0, 1.0, 1.0, 1.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(-10.0, 10.0, -10.0, 10.0);
+    gluOrtho2D(-100.0, 100.0, -100.0, 100.0);
 
     glutDisplayFunc(display);            // Set the display callback function
 
     glutMainLoop();                       // Enter the event loop
-
 }
 
 void SVM::display() {
@@ -264,15 +264,15 @@ void SVM::display() {
     // Draw x-axis
     glColor3f(0.0, 0.0, 0.0); // Set color to black
     glBegin(GL_LINES);
-    glVertex2d(-10.0, 0.0);
-    glVertex2d(10.0, 0.0);
+    glVertex2d(-100.0, 0.0);
+    glVertex2d(100.0, 0.0);
     glEnd();
 
     // Draw y-axis
     glColor3f(0.0, 0.0, 0.0); // Set color to black
     glBegin(GL_LINES);
-    glVertex2d(0.0, -10.0);
-    glVertex2d(0.0, 10.0);
+    glVertex2d(0.0, -100.0);
+    glVertex2d(0.0, 100.0);
     glEnd();
 
     glLineWidth(1.0); // Reset line width
@@ -280,12 +280,16 @@ void SVM::display() {
     glColor3f(1.0, 0.0, 0.0);
 
     glBegin(GL_LINES);
-    for (double x = -10.0; x <= 10.0; x += 0.01)
-    {
-        double y = (weights[0] * x + bias) / weights[1];
-        //cout << x << " " << y << endl;
-        glVertex2d(x, y);
-    }
+    cout<<weights[0]<<" "<<weights[1]<<" "<<bias<<endl;
+    //wTx+b=0
+    //(w1,w2)T(x1,x2)+b=0
+    //w1*x1+w2*x2+b=0
+    //x2=(w1*x1+b)/-w2
+    double y1 = ((weights[0] * -100.0) + bias) / -weights[1];
+    glVertex2d(-100, y1);
+    double y2 = ((weights[0] * 100.0) + bias) / -weights[1];
+    glVertex2d(100, y2);
+    cout<<y1<<" "<<y2<<endl;
     glEnd();
 
     display_points();

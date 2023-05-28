@@ -7,20 +7,22 @@ int main(int argc, char** argv)
 {
 //    preprocess data("/Users/allenchien/Documents/program/C++/support vector machine/Datasets/Breast Cancer Wisconsin (Diagnostic) Data Set.csv");
     
-    vector<vector<double>> inputs = { {-3,-1},{-4,-2},{-2,-3},{-1,-4},{5,5},{3,5}, {2,7},{7,4} };
+    vector<vector<double>> inputs = { {-30,-10},{-40,-20},{-20,-30},{-10,-40},{50,50},{30,50}, {20,70},{70,40} };
+//    vector<vector<double>> inputs = { {10,10},{10,20},{-10,30},{10,40},{20,10},{20,20}, {20,30},{20,40} };
+//    vector<vector<double>> inputs = { {33,-33},{10,-20},{10,-30},{20,-40},{20,10},{20,20}, {20,30},{20,40} };
+
+
     vector<double> labels = { -1,-1,-1,-1,1,1,1,1 };
     SVM mysvm(inputs, labels);
-
-    for (int i = 0; i < 1000; i++) {
-        mysvm.train();
-    }
-//    mysvm.get_weights();
+    
+    mysvm.train(10000);
+    //    mysvm.get_weights();
 //    mysvm.print_v(mysvm.weights);
 
-    mysvm.predict({ {1,2},{7,1},{8.2,1},{1,3} });
+    mysvm.predict({ {10,20},{70,10},{82,10},{10,30},{70,40} });
 
     mysvm.get_weights();
-    //mysvm.print_alpha();
+//    mysvm.print_alpha();
     mysvm.plot(argc, argv);
 }
 
