@@ -25,6 +25,26 @@ public:
     
     preprocess(string filename);
     
-    vector<double> read_column();
+    vector<vector<double>> read_column(int i1,int i2);
+    
+    vector<double> read_column(int i1);
+    
+    vector<string> read_label(int i1,int i2);
+    
+    void stdscaler(int index);
+    
+    void calculate_m_std(int index);
+    
+    void print_label();
+    
+    void show_data();
+    
+private:
+    vector<string> label;
+    vector<vector<double>> raw_data;
+    
+    double mean;
+    double std;
+
 };
 

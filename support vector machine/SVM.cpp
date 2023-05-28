@@ -1,8 +1,12 @@
 #include "SVM.hpp"
 
 double SVM::bias = 0.0;
+double SVM::thresh = 5.0;
+
 vector<double> SVM::weights = { 0.0,0.0 };
-vector<vector<double>> SVM::inputs = { {0.0} };
+vector<vector<double>> SVM::inputs = { {} };
+vector<double> SVM::labels = {};
+
 
 SVM::SVM(vector<vector<double>>inputs, vector<double>labels, double C, double tolerence) {
     this->inputs = inputs;
@@ -247,7 +251,7 @@ void SVM::plot(int argc, char** argv) {
     glClearColor(1.0, 1.0, 1.0, 1.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(-100.0, 100.0, -100.0, 100.0);
+    gluOrtho2D(-thresh, thresh, -thresh, thresh);
 
     glutDisplayFunc(display);            // Set the display callback function
 
@@ -264,15 +268,15 @@ void SVM::display() {
     // Draw x-axis
     glColor3f(0.0, 0.0, 0.0); // Set color to black
     glBegin(GL_LINES);
-    glVertex2d(-100.0, 0.0);
-    glVertex2d(100.0, 0.0);
+    glVertex2d(-thresh, 0.0);
+    glVertex2d(thresh, 0.0);
     glEnd();
 
     // Draw y-axis
     glColor3f(0.0, 0.0, 0.0); // Set color to black
     glBegin(GL_LINES);
-    glVertex2d(0.0, -100.0);
-    glVertex2d(0.0, 100.0);
+    glVertex2d(0.0, -thresh);
+    glVertex2d(0.0, thresh);
     glEnd();
 
     glLineWidth(1.0); // Reset line width
@@ -285,10 +289,10 @@ void SVM::display() {
     //(w1,w2)T(x1,x2)+b=0
     //w1*x1+w2*x2+b=0
     //x2=(w1*x1+b)/-w2
-    double y1 = ((weights[0] * -100.0) + bias) / -weights[1];
-    glVertex2d(-100, y1);
-    double y2 = ((weights[0] * 100.0) + bias) / -weights[1];
-    glVertex2d(100, y2);
+    double y1 = ((weights[0] * -100.0) + bias) / (-weights[1]+0.001);
+    glVertex2d(-thresh, y1);
+    double y2 = ((weights[0] * 100.0) + bias) / (-weights[1]+0.0001);
+    glVertex2d(thresh, y2);
     cout<<y1<<" "<<y2<<endl;
     glEnd();
 
@@ -304,6 +308,9 @@ void SVM::display_points() {
     glBegin(GL_POINTS);
     //glVertex2d(0.0, 0.0f); // Dot at (0, 0)
     for (int i = 0; i < inputs.size(); i++) {
+        if(labels[i]==1)    glColor3f(0.0, 1.0, 0.0);
+        else    glColor3f(0.0, 0.0, 1.0);
+
         glVertex2d(inputs[i][0], inputs[i][1]);
     }
     glEnd();

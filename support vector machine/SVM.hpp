@@ -58,7 +58,7 @@ public:
 private:
     
     static vector<vector<double>> inputs;
-    vector<double> labels;
+    static vector<double> labels;
     vector<double> alpha;
     vector<double> outputs;
     vector<double> errors;
@@ -71,6 +71,8 @@ private:
     double tol;
 
     double static bias;
+    
+    double static thresh;
 
     double alpha1_old;
     double alpha1_new;
