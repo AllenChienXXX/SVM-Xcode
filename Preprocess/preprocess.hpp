@@ -26,5 +26,13 @@ public:
     preprocess(string filename);
     
     vector<double> read_column();
+    
+    void stdscaler();
+    
+    void print_label();
+    
+private:
+    vector<double> data;
+    vector<string> label;
 };
 

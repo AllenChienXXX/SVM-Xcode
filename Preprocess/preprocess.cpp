@@ -13,32 +13,37 @@ preprocess::preprocess(){
 
 preprocess::preprocess(string filename){
     ifstream file(filename);
+    bool lab = true;
     
     string line;
-    vector<vector<string>> columns;
+    vector<vector<double>> columns;
 
     while (getline(file, line)) {
-       istringstream iss(line);
-       string value;
-       vector<std::string> row;
-
-       while (getline(iss, value, ',')) {
-           row.push_back(value);
-       }
-       // Store each column in the vector
-       for (size_t i = 0; i < row.size(); i++) {
-            if (columns.size() <= i) {
-               columns.push_back(vector<string>());
+        istringstream iss(line);
+        string value;
+        vector<double> row;
+        if(lab){
+            while(getline(iss, value, ',')) {
+                label.push_back(value);
             }
-            columns[i].push_back(row[i]);
-       }
-    }
-    // Print the stored columns
-    for (const auto& column : columns) {
-        for (const auto& value : column) {
-           cout << value << " ";
+            lab = false;
+            continue;
         }
-        cout << endl;
+        try{
+            while (getline(iss, value, ',')) {
+                row.push_back(stod(value));
+            }
+            columns.push_back(row);
+
+        }catch (const std::exception& e) {
+            cout << "Possible data loss: "<<value << e.what() << endl;
+        }
+        
     }
 }
 
+void preprocess::print_label(){
+    for(int i=0;i<label.size();i++){
+        printf("%s\n",label[i].c_str());
+    }
+}
