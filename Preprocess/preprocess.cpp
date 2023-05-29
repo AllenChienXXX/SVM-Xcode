@@ -85,6 +85,8 @@ void preprocess::calculate_m_std(int index){
 }
 
 vector<vector<double>> preprocess::read_column(int i1,int i2){
+//    stdscaler(i1);
+//    stdscaler(i2);
     vector<vector<double>> data;
     for(int i=0;i<raw_data.size();i++){
         data.push_back(vector<double>{raw_data[i][i1],raw_data[i][i2]});

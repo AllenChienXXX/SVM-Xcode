@@ -10,9 +10,9 @@ using namespace std;
 class SVM
 {
 public:
-    SVM(vector<vector<double>>inputs, vector<double>labels, double C = 200, double tolerence = 0.0001);
+    SVM(vector<vector<double>>inputs, vector<double>labels, double C = 200, double tolerence = 0.0001,double threshold = 10.0);
 
-    void init_alpha_b(int len);
+    void init_alpha_b();
 
     void get_output();
 
@@ -54,6 +54,8 @@ public:
     void static display();
 
     void static display_points();
+    
+    double get_accuracy();
 
 private:
     
@@ -64,6 +66,8 @@ private:
     vector<double> errors;
     vector<int> updatelist;
     static vector<double> weights;
+    
+    unsigned int len;
 
     //range C
     double C;

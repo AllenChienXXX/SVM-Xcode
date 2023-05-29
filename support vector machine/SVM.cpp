@@ -1,24 +1,25 @@
 #include "SVM.hpp"
 
 double SVM::bias = 0.0;
-double SVM::thresh = 5.0;
+double SVM::thresh = 10.0;
 
 vector<double> SVM::weights = { 0.0,0.0 };
 vector<vector<double>> SVM::inputs = { {} };
 vector<double> SVM::labels = {};
 
 
-SVM::SVM(vector<vector<double>>inputs, vector<double>labels, double C, double tolerence) {
+SVM::SVM(vector<vector<double>>inputs, vector<double>labels, double C, double tolerence, double threshold) {
     this->inputs = inputs;
     this->labels = labels;
     this->C = C;
     this->tol = tolerence;
-    int len = inputs.size();
+    this->len = inputs.size();
+    this->thresh = threshold;
     //initialize the vectors with the same size as input, including the alpha, output, error vector
-    init_alpha_b(len);
+    init_alpha_b();
 }
 
-void SVM::init_alpha_b(int len) {
+void SVM::init_alpha_b() {
     this->bias = 0.0;
     alpha = vector<double>(len, 0.0);
     outputs = vector<double>(len, 0.0);
@@ -28,10 +29,10 @@ void SVM::init_alpha_b(int len) {
 
 //sumof(i=1,n)(alpha_i*y_i*K_i_x) = w T x +b
 void SVM::get_output() {
-    for (int i = 0; i < outputs.size(); i++) {
+    for (int i = 0; i < len; i++) {
         //calculate the output for each input
         double sum = 0.0;
-        for (int j = 0; j < outputs.size(); j++) {
+        for (int j = 0; j < len; j++) {
             sum += alpha[j] * labels[j] * Kernel_function(inputs[i], inputs[j]);
         }
         sum += bias;
@@ -41,7 +42,7 @@ void SVM::get_output() {
 
 //E_i = Output_i - labels_i
 void SVM::get_error() {
-    for (int i = 0; i < errors.size(); i++) {
+    for (int i = 0; i < len; i++) {
         errors[i] = outputs[i] - labels[i];
     }
 }
@@ -52,6 +53,7 @@ void SVM::train(int epoch) {
         get_error();
         update();
     }
+    printf("Accuracy: %f",get_accuracy());
 }
 
 void SVM::update() {
@@ -131,7 +133,7 @@ void SVM::update_bias(int index1, int index2) {
 }
 //select i which doesn't satisfy KKT condition
 int SVM::select_alpha1() {
-    for (int i = 0; i < alpha.size(); i++) {
+    for (int i = 0; i < len; i++) {
         if ((alpha[i] > 0) && (alpha[i] < C) && (labels[i] * outputs[i] != 1)) {
             return i;
         }
@@ -314,4 +316,18 @@ void SVM::display_points() {
         glVertex2d(inputs[i][0], inputs[i][1]);
     }
     glEnd();
+}
+
+double SVM::get_accuracy(){
+    double acc = 0.0;
+    get_weights();
+    for (int i = 0; i<len; i++){
+        double sum_w = 0.0;
+        
+        sum_w = outputs[i] >= 0 ? 1 : -1;
+        if(sum_w==labels[i]){
+            acc++;
+        }
+    }
+    return acc/inputs.size();
 }

@@ -36,6 +36,7 @@
 		BFA11CA62A1E5E30007812BE /* preprocess.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = preprocess.cpp; sourceTree = "<group>"; };
 		BFA11CA72A1E5E30007812BE /* preprocess.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = preprocess.hpp; sourceTree = "<group>"; };
 		BFA11CAB2A1E5F5D007812BE /* Breast Cancer Wisconsin (Diagnostic) Data Set.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Breast Cancer Wisconsin (Diagnostic) Data Set.csv"; sourceTree = "<group>"; };
+		BFF4B4D22A24E99A005662C3 /* data.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = data.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +102,7 @@
 		BFA11CA92A1E5EF8007812BE /* Datasets */ = {
 			isa = PBXGroup;
 			children = (
+				BFF4B4D22A24E99A005662C3 /* data.csv */,
 				BFA11CAB2A1E5F5D007812BE /* Breast Cancer Wisconsin (Diagnostic) Data Set.csv */,
 			);
 			path = Datasets;
